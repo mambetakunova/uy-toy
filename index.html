@@ -1,0 +1,423 @@
+<!doctype html>
+<html lang="ky">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>Үй той — Мирбек & Акжолтой</title>
+<meta name="description" content="Үй тойго чакыруу. 31-декабрь, саат 18:00. Джал-15, 30-үй, 65-батир.">
+<meta property="og:title" content="Үй той — 31-декабрь">
+<meta property="og:description" content="Мирбек & Акжолтой үй тойго чакырат 💌 Чакырууну ачып, баарын көрүңүз">
+<meta property="og:type" content="website">
+<meta name="theme-color" content="#c2185b">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,500;0,700;1,500&family=Lobster&family=Nunito:wght@400;600;800&display=swap" rel="stylesheet">
+<style>
+:root{
+  --pista:#a8c98a;
+  --pista-soft:#e6f0d9;
+  --pista-deep:#6f9a4e;
+  --rasp:#c2185b;
+  --rasp-deep:#8e0f42;
+  --rasp-soft:#fbe3ec;
+  --cream:#fbf8f1;
+  --ink:#2a1d22;
+  --muted:#6b5a60;
+  --serif:"Cormorant Garamond", Georgia, serif;
+  --script:"Lobster", "Segoe Script", cursive;
+  --sans:"Nunito", system-ui, -apple-system, "Segoe UI", sans-serif;
+}
+*{box-sizing:border-box;margin:0;padding:0}
+html{scroll-behavior:smooth}
+body{background:var(--cream);color:var(--ink);font-family:var(--sans);line-height:1.6;-webkit-font-smoothing:antialiased;overflow-x:hidden}
+body.locked{overflow:hidden;height:100vh}
+.wrap{max-width:520px;margin:0 auto;padding:0 20px}
+section{padding:64px 0;text-align:center}
+.eyebrow{font-size:12px;letter-spacing:.22em;text-transform:uppercase;color:var(--pista-deep);font-weight:800;margin-bottom:10px}
+h2{font-family:var(--serif);font-weight:700;font-size:38px;line-height:1.15;color:var(--rasp-deep);margin-bottom:18px}
+.divider{display:flex;align-items:center;justify-content:center;gap:12px;margin:22px auto;color:var(--rasp)}
+.divider::before,.divider::after{content:"";height:1px;width:60px;background:linear-gradient(90deg,transparent,var(--pista))}
+.divider::after{transform:scaleX(-1)}
+
+/* ---------- Gate ---------- */
+#gate{position:fixed;inset:0;z-index:50;display:flex;flex-direction:column;align-items:center;justify-content:center;gap:22px;padding:24px;text-align:center;color:#fff;
+  background:radial-gradient(circle at 50% 30%,#d6306f 0%,var(--rasp) 40%,var(--rasp-deep) 100%);transition:opacity .9s ease, transform .9s ease}
+#gate.hide{opacity:0;transform:scale(1.08);pointer-events:none}
+#gate .small{font-size:12px;letter-spacing:.28em;text-transform:uppercase;opacity:.85}
+#gate h1{font-family:var(--serif);font-size:46px;font-weight:700;line-height:1.1}
+#gate p{font-family:var(--serif);font-style:italic;font-size:19px;opacity:.9}
+.seal{width:132px;height:132px;border-radius:50%;border:none;cursor:pointer;background:var(--pista-soft);display:grid;place-items:center;
+  box-shadow:0 0 0 8px rgba(255,255,255,.15),0 18px 40px rgba(0,0,0,.3);animation:pulse 2.4s ease-in-out infinite}
+.seal svg{width:96px;height:96px}
+@keyframes pulse{0%,100%{transform:scale(1)}50%{transform:scale(1.06)}}
+#gate .hint{font-size:14px;opacity:.85}
+#gate .date{font-family:var(--serif);font-size:20px;letter-spacing:.1em}
+
+/* ---------- Hero ---------- */
+.hero{min-height:100svh;display:flex;flex-direction:column;justify-content:center;align-items:center;padding:56px 20px;position:relative;overflow:hidden;
+  background:linear-gradient(180deg,var(--pista-soft) 0%,var(--cream) 100%)}
+.hero::before,.hero::after{content:"";position:absolute;border-radius:50%;filter:blur(2px);opacity:.55}
+.hero::before{width:320px;height:320px;background:var(--pista);top:-120px;left:-120px}
+.hero::after{width:260px;height:260px;background:var(--rasp-soft);bottom:-90px;right:-90px}
+.hero > *{position:relative;z-index:1}
+.emblem{width:150px;height:150px;margin-bottom:26px;animation:spin 60s linear infinite}
+@keyframes spin{to{transform:rotate(360deg)}}
+.hero .kind{font-family:var(--serif);font-weight:700;font-size:64px;letter-spacing:.06em;color:var(--rasp);line-height:1}
+.hero .names{font-family:var(--script);font-size:40px;color:var(--pista-deep);margin:18px 0 8px}
+.hero .when{font-family:var(--serif);font-size:24px;color:var(--ink)}
+.hero .scroll{margin-top:40px;font-size:12px;letter-spacing:.22em;text-transform:uppercase;color:var(--muted);animation:bob 2s ease-in-out infinite}
+@keyframes bob{0%,100%{transform:translateY(0)}50%{transform:translateY(6px)}}
+
+/* ---------- Invite text ---------- */
+.letter p{font-family:var(--serif);font-size:22px;line-height:1.5;color:var(--ink)}
+.letter .greet{font-family:var(--script);font-size:34px;color:var(--rasp);margin-bottom:16px}
+.letter .sign{margin-top:22px;font-family:var(--script);font-size:28px;color:var(--pista-deep)}
+
+/* ---------- Calendar ---------- */
+.card{background:#fff;border-radius:28px;padding:28px 22px;box-shadow:0 12px 36px rgba(142,15,66,.08);border:1px solid var(--pista-soft)}
+.cal-title{font-weight:800;letter-spacing:.18em;font-size:13px;color:var(--muted);margin-bottom:14px}
+.cal{display:grid;grid-template-columns:repeat(7,1fr);gap:6px;font-size:15px}
+.cal .dow{font-size:12px;color:var(--muted);font-weight:800;padding-bottom:6px}
+.cal span{aspect-ratio:1;display:grid;place-items:center;border-radius:50%}
+.cal .day-on{background:var(--rasp);color:#fff;font-weight:800;position:relative;box-shadow:0 6px 16px rgba(194,24,91,.35)}
+.cal .day-on::after{content:"♥";position:absolute;top:-10px;right:-4px;font-size:14px;color:var(--rasp)}
+.time-line{margin-top:18px;font-family:var(--serif);font-size:24px;color:var(--rasp-deep)}
+
+/* ---------- Countdown ---------- */
+.countdown-sec{background:linear-gradient(135deg,var(--rasp) 0%,var(--rasp-deep) 100%);color:#fff}
+.countdown-sec .eyebrow{color:var(--pista-soft)}
+.countdown-sec h2{color:#fff}
+.cd{display:grid;grid-template-columns:repeat(4,1fr);gap:10px}
+.cd div{background:rgba(255,255,255,.12);border:1px solid rgba(255,255,255,.25);border-radius:999px 999px 18px 18px;padding:20px 4px 14px}
+.cd strong{display:block;font-family:var(--serif);font-size:40px;line-height:1;font-weight:700}
+.cd small{font-size:12px;letter-spacing:.1em;opacity:.85}
+.cd-done{font-family:var(--script);font-size:32px}
+
+/* ---------- Address ---------- */
+.addr .place{font-family:var(--serif);font-size:28px;font-weight:700;color:var(--ink);line-height:1.25}
+.addr .city{color:var(--muted);margin:6px 0 16px}
+.pill{display:inline-block;background:var(--pista-soft);color:var(--pista-deep);font-weight:800;border-radius:999px;padding:6px 16px;font-size:14px;margin-bottom:20px}
+.btn{display:inline-flex;align-items:center;justify-content:center;gap:8px;width:100%;padding:15px 20px;border-radius:999px;font:800 15px var(--sans);letter-spacing:.04em;
+  cursor:pointer;border:2px solid var(--rasp);background:var(--rasp);color:#fff;text-decoration:none;transition:transform .15s, background .2s}
+.btn:active{transform:scale(.98)}
+.btn.ghost{background:transparent;color:var(--rasp)}
+.btn + .btn{margin-top:10px}
+.btn[disabled]{opacity:.6;cursor:default}
+
+/* ---------- RSVP ---------- */
+.rsvp-sec{background:var(--pista-soft)}
+.rsvp-sec p.lead{color:var(--muted);margin-bottom:22px}
+form{display:flex;flex-direction:column;gap:10px;text-align:left}
+input[type=text],textarea{width:100%;padding:14px 18px;border-radius:18px;border:1.5px solid #d5e3c6;background:#fff;font:600 16px var(--sans);color:var(--ink);outline:none}
+input[type=text]:focus,textarea:focus{border-color:var(--rasp)}
+textarea{min-height:96px;resize:vertical}
+.opt{display:block;cursor:pointer}
+.opt input{position:absolute;opacity:0}
+.opt span{display:block;padding:14px 18px;border-radius:18px;background:#fff;border:1.5px solid #d5e3c6;font-weight:600;transition:all .2s}
+.opt input:checked + span{border-color:var(--rasp);background:var(--rasp-soft);color:var(--rasp-deep)}
+.opt input:focus-visible + span{outline:2px solid var(--rasp);outline-offset:2px}
+.form-msg{text-align:center;font-weight:700;min-height:1.4em;margin-top:4px}
+.form-msg.ok{color:var(--pista-deep)}
+.form-msg.err{color:var(--rasp)}
+.thanks{font-family:var(--script);font-size:30px;color:var(--rasp)}
+
+/* ---------- Wishes ---------- */
+.wishes{display:flex;flex-direction:column;gap:12px;text-align:left}
+.wish{background:#fff;border-radius:20px;padding:18px 20px;border-left:4px solid var(--pista)}
+.wish p{font-family:var(--serif);font-size:19px;white-space:pre-line}
+.wish b{display:block;margin-top:8px;font-size:12px;letter-spacing:.14em;text-transform:uppercase;color:var(--rasp)}
+.empty{color:var(--muted);font-style:italic}
+
+/* ---------- Footer ---------- */
+footer{padding:64px 20px 96px;text-align:center;background:linear-gradient(180deg,var(--cream),var(--pista-soft))}
+footer .big{font-family:var(--serif);font-size:30px;color:var(--rasp-deep);font-weight:700;line-height:1.2}
+footer .names{font-family:var(--script);font-size:34px;color:var(--pista-deep);margin-top:14px}
+
+/* ---------- Music button ---------- */
+#music{position:fixed;right:16px;bottom:16px;z-index:40;width:52px;height:52px;border-radius:50%;border:none;cursor:pointer;background:var(--rasp);color:#fff;
+  box-shadow:0 10px 24px rgba(142,15,66,.35);display:grid;place-items:center;opacity:0;pointer-events:none;transition:opacity .4s}
+#music.show{opacity:1;pointer-events:auto}
+#music svg{width:24px;height:24px}
+#music.playing svg{animation:spin 4s linear infinite}
+#yt{position:fixed;width:1px;height:1px;left:-9999px;top:0;opacity:0;pointer-events:none}
+
+/* ---------- Reveal ---------- */
+.reveal{opacity:0;transform:translateY(24px);transition:opacity .8s ease, transform .8s ease}
+.reveal.in{opacity:1;transform:none}
+@media (prefers-reduced-motion:reduce){*{animation:none!important;transition:none!important}.reveal{opacity:1;transform:none}}
+</style>
+</head>
+<body class="locked">
+
+<!-- Түндүк (шаңырак) — үйдүн белгиси -->
+<svg width="0" height="0" style="position:absolute" aria-hidden="true">
+  <defs>
+    <symbol id="tunduk" viewBox="0 0 100 100">
+      <g stroke="currentColor" stroke-width="2.2" stroke-linecap="round"><line x1="50" y1="2" x2="50" y2="12" transform="rotate(0 50 50)"/><line x1="50" y1="2" x2="50" y2="12" transform="rotate(15 50 50)"/><line x1="50" y1="2" x2="50" y2="12" transform="rotate(30 50 50)"/><line x1="50" y1="2" x2="50" y2="12" transform="rotate(45 50 50)"/><line x1="50" y1="2" x2="50" y2="12" transform="rotate(60 50 50)"/><line x1="50" y1="2" x2="50" y2="12" transform="rotate(75 50 50)"/><line x1="50" y1="2" x2="50" y2="12" transform="rotate(90 50 50)"/><line x1="50" y1="2" x2="50" y2="12" transform="rotate(105 50 50)"/><line x1="50" y1="2" x2="50" y2="12" transform="rotate(120 50 50)"/><line x1="50" y1="2" x2="50" y2="12" transform="rotate(135 50 50)"/><line x1="50" y1="2" x2="50" y2="12" transform="rotate(150 50 50)"/><line x1="50" y1="2" x2="50" y2="12" transform="rotate(165 50 50)"/><line x1="50" y1="2" x2="50" y2="12" transform="rotate(180 50 50)"/><line x1="50" y1="2" x2="50" y2="12" transform="rotate(195 50 50)"/><line x1="50" y1="2" x2="50" y2="12" transform="rotate(210 50 50)"/><line x1="50" y1="2" x2="50" y2="12" transform="rotate(225 50 50)"/><line x1="50" y1="2" x2="50" y2="12" transform="rotate(240 50 50)"/><line x1="50" y1="2" x2="50" y2="12" transform="rotate(255 50 50)"/><line x1="50" y1="2" x2="50" y2="12" transform="rotate(270 50 50)"/><line x1="50" y1="2" x2="50" y2="12" transform="rotate(285 50 50)"/><line x1="50" y1="2" x2="50" y2="12" transform="rotate(300 50 50)"/><line x1="50" y1="2" x2="50" y2="12" transform="rotate(315 50 50)"/><line x1="50" y1="2" x2="50" y2="12" transform="rotate(330 50 50)"/><line x1="50" y1="2" x2="50" y2="12" transform="rotate(345 50 50)"/></g>
+      <circle cx="50" cy="50" r="36" fill="none" stroke="currentColor" stroke-width="4.5"/>
+      <g fill="none" stroke="currentColor" stroke-width="3.4" stroke-linecap="round">
+        <path d="M36 16 Q46 50 36 84"/><path d="M50 14 L50 86"/><path d="M64 16 Q54 50 64 84"/>
+        <path d="M16 36 Q50 46 84 36"/><path d="M14 50 L86 50"/><path d="M16 64 Q50 54 84 64"/>
+      </g>
+    </symbol>
+  </defs>
+</svg>
+
+<!-- ========== Gate ========== -->
+<div id="gate" role="dialog" aria-label="Сизге чакыруу">
+  <div class="small">Өзгөчө күн · Жаңы үй</div>
+  <h1>Сизге чакыруу</h1>
+  <p>Жылуулук жана сүйүү менен</p>
+  <button class="seal" id="open" aria-label="Чакырууну ачуу">
+    <svg style="color:var(--rasp)"><use href="#tunduk"/></svg>
+  </button>
+  <div class="hint">Ачуу үчүн түндүктү басыңыз</div>
+  <div class="date" data-bind="dateShort"></div>
+</div>
+
+<div id="yt"></div>
+<button id="music" aria-label="Музыканы өчүрүү">
+  <svg viewBox="0 0 24 24" fill="currentColor"><path d="M12 3v10.55A4 4 0 1 0 14 17V7h4V3h-6z"/></svg>
+</button>
+
+<main>
+  <!-- ========== Hero ========== -->
+  <header class="hero">
+    <svg class="emblem" style="color:var(--rasp)"><use href="#tunduk"/></svg>
+    <div class="eyebrow">Жаңы үйүбүздүн босогосу</div>
+    <div class="kind">ҮЙ ТОЙ</div>
+    <div class="names" data-bind="hosts"></div>
+    <div class="when" data-bind="dateLong"></div>
+    <div class="scroll">↓ Ылдый жылдырыңыз</div>
+  </header>
+
+  <!-- ========== Letter ========== -->
+  <section class="letter">
+    <div class="wrap reveal">
+      <div class="eyebrow">Сүйүү менен чакырабыз</div>
+      <div class="greet">Урматтуу коноктор!</div>
+      <p>Жаңы үйүбүздүн босогосун аттап, кубанычыбызды бирге бөлүшүүгө чакырабыз.</p>
+      <div class="divider">♥</div>
+      <p>Сиздердин ак батаңыз жана жылуу каалооңуз — биз үчүн эң баалуу белек. Келиңиздер, дасторконубуздан ооз тийип, бирге шаттанып кетиңиздер!</p>
+      <div class="sign" data-bind="hosts"></div>
+    </div>
+  </section>
+
+  <!-- ========== Calendar ========== -->
+  <section style="padding-top:0">
+    <div class="wrap reveal">
+      <div class="eyebrow">Календарга белгилеп коюңуз</div>
+      <h2 data-bind="dateDay"></h2>
+      <div class="card">
+        <div class="cal-title" data-bind="monthYear"></div>
+        <div class="cal" id="cal"></div>
+        <div class="time-line">♥ саат <span data-bind="time"></span></div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ========== Countdown ========== -->
+  <section class="countdown-sec">
+    <div class="wrap reveal">
+      <div class="eyebrow">Тойго чейин</div>
+      <h2>Калды</h2>
+      <div class="cd" id="cd">
+        <div><strong id="cd-d">00</strong><small>Күн</small></div>
+        <div><strong id="cd-h">00</strong><small>Саат</small></div>
+        <div><strong id="cd-m">00</strong><small>Мүнөт</small></div>
+        <div><strong id="cd-s">00</strong><small>Секунд</small></div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ========== Address ========== -->
+  <section class="addr">
+    <div class="wrap reveal">
+      <div class="eyebrow">Дареги</div>
+      <h2>Кайда?</h2>
+      <div class="card">
+        <div class="place" data-bind="address"></div>
+        <div class="city" data-bind="city"></div>
+        <div class="pill"><span data-bind="dateShort"></span> · <span data-bind="time"></span></div>
+        <a class="btn" id="map" target="_blank" rel="noopener">2ГИС боюнча жол ↗</a>
+        <button class="btn ghost" id="copy" type="button">Даректи көчүрүү</button>
+      </div>
+    </div>
+  </section>
+
+  <!-- ========== RSVP ========== -->
+  <section class="rsvp-sec" id="rsvp">
+    <div class="wrap reveal">
+      <div class="eyebrow">Сиздерди күтөбүз</div>
+      <h2>Келесизби?</h2>
+      <p class="lead">Урматтуу конок, келериңизди ырастап коюуңузду суранабыз.</p>
+      <form id="form" novalidate>
+        <input type="text" name="name" placeholder="Атыңыз" required autocomplete="name" maxlength="80">
+        <label class="opt"><input type="radio" name="answer" value="Ооба, барам" checked><span>Ооба, барам</span></label>
+        <label class="opt"><input type="radio" name="answer" value="Жубайым менен барам"><span>Жубайым менен барам</span></label>
+        <label class="opt"><input type="radio" name="answer" value="Тилекке каршы, келе албайм"><span>Тилекке каршы, келе албайм</span></label>
+        <textarea name="wish" placeholder="Каалооңуз (милдеттүү эмес)" maxlength="600"></textarea>
+        <button class="btn" type="submit">Жооп берүү</button>
+        <div class="form-msg" id="form-msg" role="status"></div>
+      </form>
+    </div>
+  </section>
+
+  <!-- ========== Wishes ========== -->
+  <section id="wishes-sec">
+    <div class="wrap reveal">
+      <div class="eyebrow">Жылуу сөздөр</div>
+      <h2>Коноктордун каалоолору</h2>
+      <div class="wishes" id="wishes"><p class="empty">Каалоолор жүктөлүүдө…</p></div>
+    </div>
+  </section>
+
+  <footer>
+    <svg style="width:64px;height:64px;color:var(--pista-deep)"><use href="#tunduk"/></svg>
+    <div class="divider">♥</div>
+    <div class="big">Сиздерди чыдамсыздык<br>менен күтөбүз!</div>
+    <div class="names" data-bind="hosts"></div>
+  </footer>
+</main>
+
+<script>
+/* ===================== НАСТРОЙКИ — меняйте здесь ===================== */
+const CONFIG = {
+  hosts: "Мирбек & Акжолтой",
+  date: "2026-12-31T18:00:00+06:00",            // дата и время (Бишкек, UTC+6)
+  address: "Джал-15 кичи району, 30-үй, 65-батир",
+  city: "Бишкек шаары",
+  mapUrl: "https://2gis.kg/bishkek/search/%D0%94%D0%B6%D0%B0%D0%BB-15%2C%2030",
+  youtubeId: "2p94SXuDoFk",
+  youtubeStart: 40,                               // секунда, с которой начинается музыка
+  // URL веб-приложения Google Apps Script (см. README). Пока пусто — ответы не отправляются.
+  sheetUrl: ""
+};
+/* ===================================================================== */
+
+const MONTHS = ["январь","февраль","март","апрель","май","июнь","июль","август","сентябрь","октябрь","ноябрь","декабрь"];
+const target = new Date(CONFIG.date);
+// Показываем дату по времени Бишкека, независимо от часового пояса гостя
+const local = new Date(target.getTime() + 6*3600e3);
+const Y = local.getUTCFullYear(), M = local.getUTCMonth(), D = local.getUTCDate();
+const pad = n => String(n).padStart(2,"0");
+const bind = {
+  hosts: CONFIG.hosts,
+  address: CONFIG.address,
+  city: CONFIG.city,
+  time: pad(local.getUTCHours()) + ":" + pad(local.getUTCMinutes()),
+  dateShort: `${pad(D)}.${pad(M+1)}.${Y}`,
+  dateLong: `${D}-${MONTHS[M]}, ${Y}`,
+  dateDay: `${D}-${MONTHS[M]}`,
+  monthYear: `${MONTHS[M].toUpperCase()} ${Y}`
+};
+document.querySelectorAll("[data-bind]").forEach(el => el.textContent = bind[el.dataset.bind]);
+document.getElementById("map").href = CONFIG.mapUrl;
+
+/* --- Calendar --- */
+(() => {
+  const cal = document.getElementById("cal");
+  ["Дш","Шш","Шр","Бш","Жм","Иш","Жк"].forEach(d => cal.insertAdjacentHTML("beforeend", `<span class="dow">${d}</span>`));
+  const first = (new Date(Date.UTC(Y, M, 1)).getUTCDay() + 6) % 7; // Monday = 0
+  const days = new Date(Date.UTC(Y, M + 1, 0)).getUTCDate();
+  for (let i = 0; i < first; i++) cal.insertAdjacentHTML("beforeend", "<span></span>");
+  for (let d = 1; d <= days; d++) cal.insertAdjacentHTML("beforeend", `<span class="${d === D ? "day-on" : ""}">${d}</span>`);
+})();
+
+/* --- Countdown --- */
+(() => {
+  const el = id => document.getElementById(id);
+  const tick = () => {
+    let s = Math.floor((target - Date.now()) / 1000);
+    if (s <= 0) { el("cd").outerHTML = '<div class="cd-done">Той башталды! 🎉</div>'; clearInterval(t); return; }
+    el("cd-d").textContent = pad(Math.floor(s / 86400)); s %= 86400;
+    el("cd-h").textContent = pad(Math.floor(s / 3600)); s %= 3600;
+    el("cd-m").textContent = pad(Math.floor(s / 60));
+    el("cd-s").textContent = pad(s % 60);
+  };
+  const t = setInterval(tick, 1000); tick();
+})();
+
+/* --- Copy address --- */
+document.getElementById("copy").addEventListener("click", async e => {
+  const text = `${CONFIG.address}, ${CONFIG.city}`;
+  try { await navigator.clipboard.writeText(text); }
+  catch { const ta = document.createElement("textarea"); ta.value = text; document.body.appendChild(ta); ta.select(); document.execCommand("copy"); ta.remove(); }
+  e.target.textContent = "Көчүрүлдү ✓";
+  setTimeout(() => e.target.textContent = "Даректи көчүрүү", 2000);
+});
+
+/* --- Music (YouTube) --- */
+let player, ytReady = false, wantPlay = false, playing = false;
+const musicBtn = document.getElementById("music");
+window.onYouTubeIframeAPIReady = () => {
+  player = new YT.Player("yt", {
+    width: 1, height: 1, videoId: CONFIG.youtubeId,
+    playerVars: { start: CONFIG.youtubeStart, controls: 0, playsinline: 1, loop: 1, playlist: CONFIG.youtubeId },
+    events: {
+      onReady: () => { ytReady = true; if (wantPlay) startMusic(); },
+      onStateChange: ev => {
+        playing = ev.data === YT.PlayerState.PLAYING;
+        musicBtn.classList.toggle("playing", playing);
+        musicBtn.setAttribute("aria-label", playing ? "Музыканы өчүрүү" : "Музыканы күйгүзүү");
+        if (ev.data === YT.PlayerState.ENDED) { player.seekTo(CONFIG.youtubeStart); player.playVideo(); }
+      }
+    }
+  });
+};
+const s = document.createElement("script"); s.src = "https://www.youtube.com/iframe_api"; document.head.appendChild(s);
+function startMusic(){ if (!ytReady) { wantPlay = true; return; } player.unMute(); player.setVolume(70); player.playVideo(); }
+musicBtn.addEventListener("click", () => { if (!ytReady) return; playing ? player.pauseVideo() : player.playVideo(); });
+
+/* --- Gate --- */
+document.getElementById("open").addEventListener("click", () => {
+  document.getElementById("gate").classList.add("hide");
+  document.body.classList.remove("locked");
+  musicBtn.classList.add("show");
+  startMusic();
+});
+
+/* --- Reveal on scroll --- */
+const io = new IntersectionObserver(es => es.forEach(e => { if (e.isIntersecting) { e.target.classList.add("in"); io.unobserve(e.target); } }), { threshold: .15 });
+document.querySelectorAll(".reveal").forEach(el => io.observe(el));
+
+/* --- RSVP → Google Sheets --- */
+const form = document.getElementById("form"), msg = document.getElementById("form-msg");
+form.addEventListener("submit", async e => {
+  e.preventDefault();
+  const data = new FormData(form);
+  const name = (data.get("name") || "").trim();
+  if (!name) { msg.className = "form-msg err"; msg.textContent = "Атыңызды жазыңыз"; form.name.focus(); return; }
+  if (!CONFIG.sheetUrl) { msg.className = "form-msg err"; msg.textContent = "Форма азырынча туташтырыла элек"; return; }
+  const btn = form.querySelector("button[type=submit]");
+  btn.disabled = true; btn.textContent = "Жөнөтүлүүдө…"; msg.textContent = "";
+  try {
+    await fetch(CONFIG.sheetUrl, { method: "POST", mode: "no-cors", body: new URLSearchParams({ name, answer: data.get("answer"), wish: (data.get("wish") || "").trim() }) });
+    form.outerHTML = `<div class="card"><div class="thanks">Рахмат, ${name.replace(/[<>&"]/g, "")}!</div><p class="lead" style="margin:10px 0 0">Жообуңуз кабыл алынды ♥</p></div>`;
+    setTimeout(loadWishes, 2500);
+  } catch {
+    btn.disabled = false; btn.textContent = "Жооп берүү";
+    msg.className = "form-msg err"; msg.textContent = "Ката кетти, кайра аракет кылыңыз";
+  }
+});
+
+/* --- Wishes from Google Sheets --- */
+async function loadWishes(){
+  const box = document.getElementById("wishes");
+  if (!CONFIG.sheetUrl) { box.innerHTML = '<p class="empty">Биринчи болуп каалооңузду калтырыңыз ♥</p>'; return; }
+  try {
+    const list = await (await fetch(CONFIG.sheetUrl)).json();
+    if (!list.length) { box.innerHTML = '<p class="empty">Биринчи болуп каалооңузду калтырыңыз ♥</p>'; return; }
+    box.innerHTML = "";
+    list.forEach(w => {
+      const d = document.createElement("div"); d.className = "wish";
+      const p = document.createElement("p"); p.textContent = w.wish;
+      const b = document.createElement("b"); b.textContent = w.name;
+      d.append(p, b); box.appendChild(d);
+    });
+  } catch { box.innerHTML = '<p class="empty">Каалоолорду жүктөй алган жокпуз</p>'; }
+}
+loadWishes();
+</script>
+</body>
+</html>
