@@ -3,9 +3,9 @@
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
-<title>Үй той — Мирбек & Акжолтой</title>
-<meta name="description" content="Үй тойго чакыруу. 31-декабрь, саат 18:00. Джал-15, 30-үй, 65-батир.">
-<meta property="og:title" content="Үй той — 31-декабрь">
+<title>Үй той & Жаңы жылдык шерне — Мирбек & Акжолтой</title>
+<meta name="description" content="Үй той & Жаңы жылдык шернеге чакыруу. 31-декабрь, саат 18:00. Джал-15, 30-үй, 65-батир.">
+<meta property="og:title" content="Үй той & Жаңы жылдык шерне — 31-декабрь">
 <meta property="og:description" content="Мирбек & Акжолтой үй тойго чакырат 💌 Чакырууну ачып, баарын көрүңүз">
 <meta property="og:type" content="website">
 <meta name="theme-color" content="#595f34">
@@ -63,6 +63,8 @@ h2{font-family:var(--serif);font-weight:700;font-size:38px;line-height:1.15;colo
 .emblem{width:150px;height:150px;margin-bottom:26px;animation:spin 60s linear infinite}
 @keyframes spin{to{transform:rotate(360deg)}}
 .hero .kind{font-family:var(--serif);font-weight:700;font-size:64px;letter-spacing:.06em;color:var(--olive);line-height:1}
+.hero .kind2{font-family:var(--serif);font-style:italic;font-weight:500;font-size:30px;color:var(--olive);margin-top:10px;line-height:1.2}
+.hero .kind2 b{font-family:var(--script);font-style:normal;font-weight:400;color:var(--butter-deep);margin-right:6px}
 .hero .names{font-family:var(--script);font-size:40px;color:var(--butter-deep);margin:18px 0 8px}
 .hero .when{font-family:var(--serif);font-size:24px;color:var(--ink)}
 .hero .scroll{margin-top:40px;font-size:12px;letter-spacing:.22em;text-transform:uppercase;color:var(--muted);animation:bob 2s ease-in-out infinite}
@@ -164,7 +166,7 @@ footer .names{font-family:var(--script);font-size:34px;color:var(--butter-deep);
 
 <!-- ========== Gate ========== -->
 <div id="gate" role="dialog" aria-label="Сизге чакыруу">
-  <div class="small">Өзгөчө күн · Жаңы үй</div>
+  <div class="small">Жаңы үй · Жаңы жыл</div>
   <h1>Сизге чакыруу</h1>
   <p>Жылуулук жана сүйүү менен</p>
   <button class="seal" id="open" aria-label="Чакырууну ачуу">
@@ -185,6 +187,7 @@ footer .names{font-family:var(--script);font-size:34px;color:var(--butter-deep);
     <svg class="emblem" style="color:var(--olive)"><use href="#tunduk"/></svg>
     <div class="eyebrow">Жаңы үйүбүздүн босогосу</div>
     <div class="kind">ҮЙ ТОЙ</div>
+    <div class="kind2"><b>&amp;</b>Жаңы жылдык шерне</div>
     <div class="names" data-bind="hosts"></div>
     <div class="when" data-bind="dateLong"></div>
     <div class="scroll">↓ Ылдый жылдырыңыз</div>
@@ -195,7 +198,7 @@ footer .names{font-family:var(--script);font-size:34px;color:var(--butter-deep);
     <div class="wrap reveal">
       <div class="eyebrow">Сүйүү менен чакырабыз</div>
       <div class="greet">Урматтуу коноктор!</div>
-      <p>Жаңы үйүбүздүн босогосун аттап, кубанычыбызды бирге бөлүшүүгө чакырабыз.</p>
+      <p>Жаңы үйүбүздүн босогосун аттап, Жаңы жылды бирге тосуп, кубанычыбызды бөлүшүүгө чакырабыз.</p>
       <div class="divider">♥</div>
       <p>Сиздердин ак батаңыз жана жылуу каалооңуз — биз үчүн эң баалуу белек. Келиңиздер, дасторконубуздан ооз тийип, бирге шаттанып кетиңиздер!</p>
       <div class="sign" data-bind="hosts"></div>
@@ -275,6 +278,7 @@ footer .names{font-family:var(--script);font-size:34px;color:var(--butter-deep);
     <svg style="width:64px;height:64px;color:var(--butter-deep)"><use href="#tunduk"/></svg>
     <div class="divider">♥</div>
     <div class="big">Сиздерди чыдамсыздык<br>менен күтөбүз!</div>
+    <p style="margin-top:12px;font-family:var(--serif);font-style:italic;font-size:20px;color:var(--muted)">Жаңы жылыңыздар менен! ✨</p>
     <div class="names" data-bind="hosts"></div>
   </footer>
 </main>
