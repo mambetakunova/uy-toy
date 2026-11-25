@@ -140,6 +140,7 @@ footer .names{font-family:var(--script);font-size:34px;color:var(--butter-deep);
   box-shadow:0 10px 24px rgba(61,66,32,.35);display:grid;place-items:center;opacity:0;pointer-events:none;transition:opacity .4s}
 #music.show{opacity:1;pointer-events:auto}
 #music svg{width:24px;height:24px}
+#yt{position:fixed;width:1px;height:1px;left:-9999px;top:0;opacity:0;pointer-events:none}
 #music.playing svg{animation:spin 4s linear infinite}
 
 /* ---------- Reveal ---------- */
@@ -176,7 +177,7 @@ footer .names{font-family:var(--script);font-size:34px;color:var(--butter-deep);
   <div class="date" data-bind="dateShort"></div>
 </div>
 
-<audio id="audio" preload="auto" loop></audio>
+<div id="yt"></div>
 <button id="music" aria-label="Музыканы өчүрүү">
   <svg viewBox="0 0 24 24" fill="currentColor"><path d="M12 3v10.55A4 4 0 1 0 14 17V7h4V3h-6z"/></svg>
 </button>
@@ -291,7 +292,7 @@ const CONFIG = {
   address: "Джал-15 кичи району, 30-үй, 65-батир",
   city: "Бишкек шаары",
   mapUrl: "https://2gis.kg/bishkek/search/%D0%94%D0%B6%D0%B0%D0%BB-15%2C%2030",
-  music: "music.mp3",                             // файл музыки рядом с index.html
+  youtubeId: "mGxPSzWKjvs",                       // ID песни на YouTube (из ссылки после v=)
   musicStart: 0,                                  // секунда, с которой начинается музыка
   // URL веб-приложения Google Apps Script (см. README). Пока пусто — ответы не отправляются.
   sheetUrl: "https://script.google.com/macros/s/AKfycbxapq55758FhE-NXPZ9uWGhuLuioTu1GCrv2nunDWJfCzEYzREzEkpccXP9i6bxz1oluA/exec"
@@ -350,14 +351,27 @@ document.getElementById("copy").addEventListener("click", async e => {
   setTimeout(() => e.target.textContent = "Даректи көчүрүү", 2000);
 });
 
-/* --- Music --- */
-const audio = document.getElementById("audio"), musicBtn = document.getElementById("music");
-audio.src = CONFIG.music;
-const setBtn = on => { musicBtn.classList.toggle("playing", on); musicBtn.setAttribute("aria-label", on ? "Музыканы өчүрүү" : "Музыканы күйгүзүү"); };
-audio.addEventListener("play", () => setBtn(true));
-audio.addEventListener("pause", () => setBtn(false));
-function startMusic(){ try { audio.currentTime = CONFIG.musicStart; } catch {} audio.volume = .8; audio.play().catch(() => {}); }
-musicBtn.addEventListener("click", () => audio.paused ? audio.play() : audio.pause());
+/* --- Music (YouTube) --- */
+let player, ytReady = false, wantPlay = false, playing = false;
+const musicBtn = document.getElementById("music");
+window.onYouTubeIframeAPIReady = () => {
+  player = new YT.Player("yt", {
+    width: 1, height: 1, videoId: CONFIG.youtubeId,
+    playerVars: { start: CONFIG.musicStart, controls: 0, playsinline: 1 },
+    events: {
+      onReady: () => { ytReady = true; if (wantPlay) startMusic(); },
+      onStateChange: ev => {
+        playing = ev.data === YT.PlayerState.PLAYING;
+        musicBtn.classList.toggle("playing", playing);
+        musicBtn.setAttribute("aria-label", playing ? "Музыканы өчүрүү" : "Музыканы күйгүзүү");
+        if (ev.data === YT.PlayerState.ENDED) { player.seekTo(CONFIG.musicStart); player.playVideo(); }
+      }
+    }
+  });
+};
+const yts = document.createElement("script"); yts.src = "https://www.youtube.com/iframe_api"; document.head.appendChild(yts);
+function startMusic(){ if (!ytReady) { wantPlay = true; return; } player.unMute(); player.setVolume(80); player.playVideo(); }
+musicBtn.addEventListener("click", () => { if (!ytReady) return; playing ? player.pauseVideo() : player.playVideo(); });
 
 /* --- Gate --- */
 document.getElementById("open").addEventListener("click", () => {
